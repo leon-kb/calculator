@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Main Controller Class.
  */
+@RestController
 public class CalculatorController {
 
     @Autowired
