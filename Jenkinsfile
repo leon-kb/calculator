@@ -62,12 +62,12 @@ pipeline {
 		        sh "./acceptance_test.sh"
 		    }
 		}
-
-		post {
-		    always {
-		        sh "docker stop calculator"
-		    }
-		}
-
 	}
+
+	post {
+	    always {
+	        sh "docker stop calculator"
+	    }
+	}
+
 }
