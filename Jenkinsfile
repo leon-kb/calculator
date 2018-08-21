@@ -59,7 +59,7 @@ pipeline {
 		stage("Acceptance test") {
 		    steps {
 		        sleep 10
-		        chmod 755 acceptance_test.sh
+		        sh "chmod 755 ./acceptance_test.sh"
 		        sh "./acceptance_test.sh"
 		    }
 		}
