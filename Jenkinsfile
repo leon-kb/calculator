@@ -4,7 +4,7 @@ pipeline {
 		pollSCM('* * * * *')
 	}
 	stages {
-		stage("Compil") {
+		stage("Compile") {
 			steps {
 				sh "./gradlew compileJava"
 			}
@@ -45,6 +45,11 @@ pipeline {
 			steps {
 				sh "docker build -t leondewit/calculator ."
 			}
+		}
+		stage("Docker push") {
+		    steps {
+		        sh "docker push leondewit/calculator"
+		    }
 		}
 
 	}
