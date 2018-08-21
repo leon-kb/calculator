@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-	    docker { image 'jenkins_slave' }
-	}
+	agent any
 	triggers {
 		pollSCM('* * * * *')
 	}
