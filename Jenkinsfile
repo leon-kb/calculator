@@ -51,6 +51,23 @@ pipeline {
 		        sh "docker push leondewit/calculator"
 		    }
 		}
+		stage("Deploy to staging") {
+		    steps {
+		        sh "docker run -d --rm -p 8765:8080 --name calculator leondewit/calculator"
+		    }
+		}
+		stage("Acceptance test") {
+		    steps {
+		        sleep 60
+		        sh "./acceptance_test.sh"
+		    }
+		}
+
+		post {
+		    always {
+		        sh "docker stop calculator"
+		    }
+		}
 
 	}
 }
