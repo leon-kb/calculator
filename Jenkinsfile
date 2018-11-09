@@ -48,7 +48,10 @@ pipeline {
 		}
 		stage("Docker push") {
 		    steps {
-		        sh "docker push leondewit/calculator"
+		        withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+		            sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+		            sh "docker push leondewit/calculator"
+                }
 		    }
 		}
 		stage("Acceptance test") {
